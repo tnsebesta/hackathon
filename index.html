@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+    <style type="text/css">
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script>
+        const map = L.map('map', {
+            center: [50.50, -110],
+            zoom: 3.5
+        });
+        
+        const basemaps = {
+            StreetView: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',   {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}),
+            Topography: L.tileLayer.wms('http://ows.mundialis.de/services/service?',   {layers: 'TOPO-WMS'}),
+            Places: L.tileLayer.wms('http://ows.mundialis.de/services/service?', {layers: 'OSM-Overlay-WMS'})
+        };
+
+        L.control.layers(basemaps).addTo(map);
+        basemaps.Topography.addTo(map);
+        const mountainIcon = L.icon({
+            iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Mountain_Icon.svg',
+            iconSize: [20,20],
+        })
+
+
+        const marker1 = L.marker([37.7288, -119.6095], {icon: mountainIcon}).bindPopup('Yosemite National Park, California').addTo(map); 
+        const marker2 = L.marker([38.089600, -111.149910], {icon: mountainIcon}).bindPopup('Capitol Reef National Park, UT, USA').addTo(map);
+        const marker3 = L.marker([40.343182, -105.688103], {icon: mountainIcon}).bindPopup('Rocky Mountain National Park, CO, USA').addTo(map);
+        const marker4 = L.marker([32.779720, -106.171669], {icon: mountainIcon}).bindPopup('White Sands National Park, NM, USA').addTo(map);
+        const marker5 = L.marker([33.881866, -115.900650], {icon: mountainIcon}).bindPopup('Joshua Tree National Park, California, USA').addTo(map);
+        const marker6 = L.marker([38.733082, -109.592514], {icon: mountainIcon}).bindPopup('Arches National Park, Utah, USA').addTo(map);
+        const marker7 = L.marker([46.879967, -121.726906], {icon: mountainIcon}).bindPopup('Mount Rainier National Park, Washington, USA').addTo(map);
+        const marker8 = L.marker([44.427895, -110.588379], {icon: mountainIcon}).bindPopup('Yellowstone National Park, WY, USA').addTo(map);
+        const marker9 = L.marker([37.297817, -113.028770], {icon: mountainIcon}).bindPopup('Zion National Park, Utah, USA').addTo(map);
+        const marker10 = L.marker([34.909988, -109.806793], {icon: mountainIcon}).bindPopup('Petrified Forest National Park, Arizona, USA').addTo(map);
+        const marker11= L.marker([36.887856, -118.555145], {icon: mountainIcon}).bindPopup('Kings Canyon National Park, California, USA').addTo(map);
+        
+    </script>
+  </body>
+</html>
+
